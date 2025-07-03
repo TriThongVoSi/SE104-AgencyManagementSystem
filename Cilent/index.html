@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- Favicon và Icons -->
+	
+		
+		<!-- SEO Meta Tags -->
+		<title>Hệ Thống Quản Lý Đại Lý | Agency Management System</title>
+		<meta name="description" content="Hệ thống quản lý đại lý toàn diện - Quản lý sản phẩm, đơn hàng, báo cáo doanh số và theo dõi công nợ một cách hiệu quả." />
+		<meta name="keywords" content="quản lý đại lý, hệ thống bán hàng, báo cáo doanh số, quản lý kho, phần mềm quản lý" />
+		<meta name="author" content="Agency Management Team" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Hệ Thống Quản Lý Đại Lý" />
+		<meta property="og:description" content="Hệ thống quản lý đại lý toàn diện với các tính năng quản lý sản phẩm, đơn hàng và báo cáo doanh số." />
+		<meta property="og:image" content="/vite.svg" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content="Hệ Thống Quản Lý Đại Lý" />
+		<meta property="twitter:description" content="Hệ thống quản lý đại lý toàn diện với các tính năng quản lý sản phẩm, đơn hàng và báo cáo doanh số." />
+		
+		<!-- Theme và PWA -->
+		<meta name="theme-color" content="#1f2937" />
+		<meta name="msapplication-TileColor" content="#1f2937" />
+		
+		<!-- Preload fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<style>
+			/* Reset và Base Styles */
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+				background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+				color: #ffffff;
+				min-height: 100vh;
+				overflow-x: hidden;
+			}
+			
+			#root {
+				min-height: 100vh;
+			}
+			
+			/* Loading Container */
+			.loading-container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				z-index: 9999;
+				transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+			}
+			
+			.loading-container.hidden {
+				opacity: 0;
+				visibility: hidden;
+			}
+			
+			/* Logo Animation */
+			.loading-logo {
+				width: 80px;
+				height: 80px;
+				background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+				border-radius: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 2rem;
+				animation: pulse 2s ease-in-out infinite;
+				box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+			}
+			
+			.loading-logo::before {
+				content: "🏢";
+				font-size: 2rem;
+			}
+			
+			@keyframes pulse {
+				0%, 100% {
+					transform: scale(1);
+					box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+				}
+				50% {
+					transform: scale(1.05);
+					box-shadow: 0 0 40px rgba(59, 130, 246, 0.5);
+				}
+			}
+			
+			/* Loading Text */
+			.loading-text {
+				text-align: center;
+				margin-bottom: 2rem;
+			}
+			
+			.loading-title {
+				font-size: 1.75rem;
+				font-weight: 700;
+				background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				margin-bottom: 0.5rem;
+			}
+			
+			.loading-subtitle {
+				font-size: 1rem;
+				color: #94a3b8;
+				font-weight: 400;
+			}
+			
+			/* Loading Spinner */
+			.loading-spinner {
+				width: 40px;
+				height: 40px;
+				border: 3px solid rgba(59, 130, 246, 0.3);
+				border-top: 3px solid #3b82f6;
+				border-radius: 50%;
+				animation: spin 1s linear infinite;
+				margin-bottom: 1rem;
+			}
+			
+			@keyframes spin {
+				0% { transform: rotate(0deg); }
+				100% { transform: rotate(360deg); }
+			}
+			
+			/* Loading Progress */
+			.loading-progress {
+				width: 200px;
+				height: 4px;
+				background: rgba(59, 130, 246, 0.2);
+				border-radius: 2px;
+				overflow: hidden;
+				margin-bottom: 1rem;
+			}
+			
+			.loading-progress-bar {
+				height: 100%;
+				background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+				border-radius: 2px;
+				animation: loading 2s ease-in-out infinite;
+			}
+			
+			@keyframes loading {
+				0% {
+					width: 0%;
+					transform: translateX(-100%);
+				}
+				50% {
+					width: 100%;
+					transform: translateX(0%);
+				}
+				100% {
+					width: 100%;
+					transform: translateX(100%);
+				}
+			}
+			
+			.loading-status {
+				font-size: 0.875rem;
+				color: #64748b;
+				font-weight: 500;
+			}
+			
+			/* Responsive Design */
+			@media (max-width: 768px) {
+				.loading-logo {
+					width: 60px;
+					height: 60px;
+				}
+				
+				.loading-logo::before {
+					font-size: 1.5rem;
+				}
+				
+				.loading-title {
+					font-size: 1.5rem;
+				}
+				
+				.loading-subtitle {
+					font-size: 0.875rem;
+				}
+				
+				.loading-progress {
+					width: 150px;
+				}
+			}
+			
+			/* Error State */
+			.error-container {
+				display: none;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				min-height: 100vh;
+				padding: 2rem;
+				text-align: center;
+			}
+			
+			.error-icon {
+				font-size: 4rem;
+				margin-bottom: 1rem;
+			}
+			
+			.error-title {
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: #ef4444;
+				margin-bottom: 0.5rem;
+			}
+			
+			.error-message {
+				color: #94a3b8;
+				margin-bottom: 2rem;
+			}
+			
+			.retry-button {
+				background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+				color: white;
+				border: none;
+				padding: 0.75rem 1.5rem;
+				border-radius: 0.5rem;
+				font-weight: 500;
+				cursor: pointer;
+				transition: transform 0.2s;
+			}
+			
+			.retry-button:hover {
+				transform: translateY(-2px);
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Loading Screen -->
+		<div id="loading-screen" class="loading-container">
+			<div class="loading-logo"></div>
+			<div class="loading-text">
+				<h1 class="loading-title">Agency Management</h1>
+				<p class="loading-subtitle">Hệ Thống Quản Lý Đại Lý</p>
+			</div>
+			<div class="loading-spinner"></div>
+			<div class="loading-progress">
+				<div class="loading-progress-bar"></div>
+			</div>
+			<p class="loading-status">Đang tải ứng dụng...</p>
+		</div>
+		
+		<!-- Error Screen -->
+		<div id="error-screen" class="error-container">
+			<div class="error-icon">⚠️</div>
+			<h2 class="error-title">Không thể tải ứng dụng</h2>
+			<p class="error-message">Đã xảy ra lỗi khi tải ứng dụng. Vui lòng thử lại hoặc liên hệ với quản trị viên.</p>
+			<button class="retry-button" onclick="window.location.reload()">
+				Thử lại
+			</button>
+		</div>
+		
+		<!-- Main App Container -->
+		<div id="root"></div>
+		
+		<!-- Scripts -->
+		<script type="module" src="/src/main.jsx"></script>
+		
+		<script>
+			// Hide loading screen when app is ready
+			window.addEventListener('load', function() {
+				setTimeout(function() {
+					const loadingScreen = document.getElementById('loading-screen');
+					if (loadingScreen) {
+						loadingScreen.classList.add('hidden');
+						setTimeout(function() {
+							loadingScreen.style.display = 'none';
+						}, 500);
+					}
+				}, 1000); // Minimum loading time for better UX
+			});
+			
+			// Error handling
+			window.addEventListener('error', function(e) {
+				console.error('Application error:', e);
+				const loadingScreen = document.getElementById('loading-screen');
+				const errorScreen = document.getElementById('error-screen');
+				
+				if (loadingScreen) {
+					loadingScreen.style.display = 'none';
+				}
+				if (errorScreen) {
+					errorScreen.style.display = 'flex';
+				}
+			});
+			
+			// Progressive loading messages
+			const loadingMessages = [
+				'Đang khởi tạo hệ thống...',
+				'Đang tải dữ liệu...',
+				'Đang chuẩn bị giao diện...',
+				'Sắp hoàn thành...'
+			];
+			
+			let messageIndex = 0;
+			const statusElement = document.querySelector('.loading-status');
+			
+			const messageInterval = setInterval(function() {
+				if (messageIndex < loadingMessages.length - 1) {
+					messageIndex++;
+					if (statusElement) {
+						statusElement.textContent = loadingMessages[messageIndex];
+					}
+				} else {
+					clearInterval(messageInterval);
+				}
+			}, 800);
+			
+			// SEO and Analytics placeholder
+			// Add your analytics code here when needed
+			
+			// Service Worker registration (for PWA functionality)
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', function() {
+					// Uncomment when you have a service worker
+					// navigator.serviceWorker.register('/sw.js');
+				});
+			}
+		</script>
+	</body>
+</html>

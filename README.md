@@ -88,3 +88,5 @@ Bạn có thể đăng nhập bằng các tài khoản mẫu sau:
 **© 7/2025 Agency Management System** 
 ---
 Tác giả: [Hồ Ngọc Quỳnh - Nguyễn Minh Đức - Phạm Trấn Quốc - Võ Sĩ Trí Thông] 
+---
+Nhận file .docx báo cáo đồ án này qua gmail vosithongtri@gmail.com (hạt dẻ 150 cành cả nhóm)

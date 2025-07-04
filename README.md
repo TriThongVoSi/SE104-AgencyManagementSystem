@@ -91,4 +91,4 @@ Bạn có thể đăng nhập bằng các tài khoản mẫu sau:
 ---
 Tác giả: [Hồ Ngọc Quỳnh - Nguyễn Minh Đức - Phạm Trấn Quốc - Võ Sĩ Trí Thông] 
 ---
-Nhận file .docx báo cáo đồ án này qua gmail vosithongtri@gmail.com (hạt dẻ 150 cành cả nhóm)
+Nếu cần file .docx báo cáo đồ án liên hệ qua gmail vosithongtri@gmail.com (hạt dẻ 150 cành cả nhóm)

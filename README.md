@@ -1,6 +1,6 @@
 # ĐỒ ÁN NHẬP MÔN CÔNG NGHỆ PHẦN MỀM
-
-# Hệ Thống Quản Lý Đại Lý (Agency Management System)
+# GVHD: ĐỖ THỊ THANH TUYỀN
+# QUẢN LÝ CÁC ĐẠI LÝ (Agency Management System)
 
 ## Giới thiệu
 Hệ thống Quản Lý Đại Lý là một ứng dụng web giúp doanh nghiệp quản lý toàn diện các đại lý, sản phẩm, phiếu nhập/xuất, công nợ, thu tiền, báo cáo doanh số và các quy định hệ thống. Ứng dụng gồm hai phần:
